@@ -3,7 +3,7 @@
 # ==============================================================================
 # Скрипт для установки и настройки AmneziaWG на Ubuntu 24.04 LTS Minimal (ARM64)
 # Версия Azure ARM64 Interactive - Refined + Fixes
-# Автор: @bivlked
+# Автор: @bivlked & Gemini
 # Версия: 2.2
 # Дата: 2025-04-21
 # Репозиторий: https://github.com/bivlked/azure
