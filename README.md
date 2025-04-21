@@ -1,7 +1,6 @@
 # azure
 Мои скрипты для тестов в Azire
 
-'''
-bash
+'''bash
 wget https://raw.githubusercontent.com/bivlked/azure/main/awgazure.sh
 '''
