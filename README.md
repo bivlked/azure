@@ -2,7 +2,7 @@
 Мои скрипты для тестов в Azure
 
 ```bash
-wget https://raw.githubusercontent.com/bivlked/azure/main/awgazure.sh
+wget https://raw.githubusercontent.com/bivlked/azure/main/install.sh
 ```
 
 ```bash
