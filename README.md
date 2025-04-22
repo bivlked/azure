@@ -6,9 +6,9 @@ wget https://raw.githubusercontent.com/bivlked/azure/main/install.sh
 ```
 
 ```bash
-chmod +x awgazure.sh
+chmod +x install.sh
 ```
 
 ```bash
-sudo bash ./awgazure.sh
+sudo bash ./install.sh
 ```
