@@ -1,4 +1,3 @@
-cat > install.sh << 'EOF'
 #!/bin/bash
 
 # ==============================================================================
@@ -188,4 +187,3 @@ if (( current_step == 99 )); then step99_finish; fi
 if [ "$VERBOSE" -eq 1 ]; then set +x; fi
 
 exit 0
-EOF
