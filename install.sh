@@ -110,8 +110,17 @@ check_free_space() {
     log "Проверка места..."; local req=1024; local avail; avail=$(df -m / | awk 'NR==2 {print $4}'); if [[ -z "$avail" ]]; then log_warn "Не удалось определить свободное место."; return 0; fi; if [[ "$avail" -lt "$req" ]]; then log_warn "Мало места: ${avail} МБ. Рекомендуется >= ${req} МБ."; read -p "Продолжить? [y/N]: " confirm < /dev/tty; if ! [[ "$confirm" =~ ^[YyЕе]$ ]]; then die "Отмена."; fi; else log "Свободно: ${avail} МБ (OK)"; fi
 }
 check_port_availability() {
-    # Ищем точное совпадение порта, окруженное пробелами или концом строки/началом строки
-    local port=$1; log "Проверка порта ${port}/udp..."; if ss -lunp | grep -q -E "(^|[:space:])${port}($|[:space:])"; then log_error "Порт ${port}/udp уже используется процессом:"; ss -lunp | grep -E "(^|[:space:])${port}($|[:space:])" | sed 's/^/  /' | log_msg "ERROR"; return 1; else log "Порт ${port}/udp свободен (OK)."; return 0; fi
+    # Используем более простую и совместимую проверку grep
+    local port=$1; log "Проверка порта ${port}/udp...";
+    # Ищем ":порт " - двоеточие, номер порта и пробел после него
+    if ss -lunp | grep -q ":${port} "; then
+        log_error "Порт ${port}/udp уже используется процессом:";
+        ss -lunp | grep ":${port} " | sed 's/^/  /' | log_msg "ERROR";
+        return 1;
+    else
+        log "Порт ${port}/udp свободен (OK).";
+        return 0;
+    fi
 }
 # Функция установки пакетов
 install_packages() {
